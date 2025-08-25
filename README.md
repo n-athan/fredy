@@ -173,6 +173,9 @@ Example: `docker create --name fredy -v /path/to/your/conf/:/conf -p 9998:9998 f
 
 You can browse the logs with `docker logs fredy -f`.
 
+## jobs
+You can export your jobs from the container with `docker cp fredy:/db/jobs.json ./jobs.json`. 
+
 ### 👐 Contributing
 
 Thanks to all the people who already contributed!
