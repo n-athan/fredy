@@ -178,6 +178,29 @@ You can browse the logs with `docker logs fredy -f`.
 ## jobs
 You can export your jobs from the container with `docker cp fredy:/db/jobs.json ./jobs.json`. 
 
+## Start docker as service
+
+``` sh
+# create a systemd service file
+cat <<EOF | sudo tee /etc/systemd/system/fredy.service
+[Unit]
+Description=Fredy Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a fredy
+ExecStop=/usr/bin/docker stop -t 2 fredy
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# enable the service
+sudo systemctl enable fredy.service
+```
+
 ### 👐 Contributing
 
 Thanks to all the people who already contributed!
