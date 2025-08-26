@@ -167,7 +167,9 @@ Or use the container that will be built automatically.
 
 Put your config.json into a path of your choice, such as `/path/to/your/conf/`.
 
-Example: `docker create --name fredy -v /path/to/your/conf/:/conf -p 9998:9998 fredy/fredy`
+Example: `docker create --name fredy -v ./conf:/conf -v ./data:/db -p 9998:9998 fredy/fredy`
+
+Run the container with `docker start fredy`.
 
 ## Logs
 
